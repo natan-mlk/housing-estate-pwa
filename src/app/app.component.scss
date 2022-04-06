@@ -1,3 +1,20 @@
+@import "./styles-assets/variables";
+
 .example-spacer {
     flex: 1 1 auto;
+  }
+
+  .toolbar {
+      background-color: $colorMain;
+      position: relative;
+//    z-index: 2;
+  }
+
+  .image-bg {
+      height: 20vh;
+      width: 100%;
+      background-image: url('../assets/backgrounds/01bg.jpg');
+      background-size: cover;
+      background-position-y: top;
+      background-position-x: right;
   }

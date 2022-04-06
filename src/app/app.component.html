@@ -1,13 +1,23 @@
-<mat-toolbar>
-  <button mat-icon-button aria-label="Example icon-button with menu icon">
+<mat-toolbar class="toolbar mat-elevation-z2" >
+  <!-- <button mat-icon-button aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
-  </button>
+  </button> -->
   <span>Appka test</span>
   <span class="example-spacer"></span>
 
-  <button mat-icon-button aria-label="..">
+  <button mat-icon-button color="accent"
+    [matMenuTriggerFor]="userMenu" aria-label="..">
     <mat-icon>person</mat-icon>
   </button>
 </mat-toolbar>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item><mat-icon>settings</mat-icon>Ustawienia profilu</button>
+  <button mat-menu-item><mat-icon>logout</mat-icon>Wyloguj</button>
+</mat-menu>
+
+<div class="image-bg">
+  <!-- <img src="../assets/backgrounds/01bg.jpg"> -->
+</div>
 
 <router-outlet></router-outlet>
