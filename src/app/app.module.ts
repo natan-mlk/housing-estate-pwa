@@ -9,6 +9,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HomeNewsModule } from './home-news/home-news.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
+import { AnnouncementsModule } from './announcements/announcements.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserProfileModule } from './user-profile/user-profile.module';
     }),
     // feature modules below
     HomeNewsModule,
-    UserProfileModule
+    UserProfileModule,
+    AnnouncementsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
