@@ -5,11 +5,11 @@
   <span>NK</span>
   <span class="example-spacer"></span>
 
-  <span class="toolbar_link_label">Aktualności</span>
-  <span class="toolbar_link_label">Komunikaty</span>
-  <span class="toolbar_link_label">Awarie</span>
+  <span class="toolbar_link_label" routerLink="">Aktualności</span>
+  <span class="toolbar_link_label" routerLink="">Komunikaty</span>
+  <!-- <span class="toolbar_link_label">Awarie</span>
   <span class="toolbar_link_label">Dyskusje</span>
-  <span class="toolbar_link_label">Dokumenty</span>
+  <span class="toolbar_link_label">Dokumenty</span> -->
 
   <button mat-icon-button color="accent"
     [matMenuTriggerFor]="userMenu" aria-label="..">
@@ -18,7 +18,7 @@
 </mat-toolbar>
 
 <mat-menu #userMenu="matMenu">
-  <button mat-menu-item><mat-icon>settings</mat-icon>Ustawienia profilu</button>
+  <button mat-menu-item routerLink="user-profile" ><mat-icon>settings</mat-icon>Ustawienia profilu</button>
   <button mat-menu-item><mat-icon>logout</mat-icon>Wyloguj</button>
 </mat-menu>
 

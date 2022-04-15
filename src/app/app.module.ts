@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HomeNewsModule } from './home-news/home-news.module';
+import { UserProfileModule } from './user-profile/user-profile.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { environment } from '../environments/environment';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    // feature modules below
+    HomeNewsModule,
+    UserProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
