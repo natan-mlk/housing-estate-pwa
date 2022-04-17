@@ -2,20 +2,40 @@
   <!-- <button mat-icon-button aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button> -->
-  <span>NK</span>
+
+  <button mat-icon-button class="toolbar_menu-icon"
+  [matMenuTriggerFor]="mainMenu" aria-label="..">
+  <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #mainMenu="matMenu">
+    <button mat-menu-item routerLink="" >Aktualności</button>
+    <button mat-menu-item routerLink="announcements" >Komunikaty</button>
+    <button mat-menu-item routerLink="announcements" >Awarie</button>
+    <button mat-menu-item routerLink="announcements" >Dyskusje</button>
+    <button mat-menu-item routerLink="announcements" >Dokumenty</button>
+  </mat-menu>
+  
+  <span class="toolbar_menu-icon">NoweKolibki</span>
+
   <span class="example-spacer"></span>
 
-  <span class="toolbar_link_label" routerLink="">Aktualności</span>
-  <span class="toolbar_link_label" routerLink="announcements">Komunikaty</span>
-  <!-- <span class="toolbar_link_label">Awarie</span>
-  <span class="toolbar_link_label">Dyskusje</span>
-  <span class="toolbar_link_label">Dokumenty</span> -->
+  <div class="toolbar_link-wrapper">
+  <div class="toolbar_link" routerLink="" routerLinkActive="toolbar_link--active" [routerLinkActiveOptions]="{exact:
+    true}">Aktualności</div>
+  <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Komunikaty</div>
+  <div class="toolbar_link">Awarie</div>
+  <div class="toolbar_link">Dyskusje</div>
+  <div class="toolbar_link">Dokumenty</div>
+</div>
 
   <button mat-icon-button color="accent"
     [matMenuTriggerFor]="userMenu" aria-label="..">
     <mat-icon>person</mat-icon>
   </button>
 </mat-toolbar>
+
+
 
 <mat-menu #userMenu="matMenu">
   <button mat-menu-item routerLink="user-profile" ><mat-icon>settings</mat-icon>Ustawienia profilu</button>

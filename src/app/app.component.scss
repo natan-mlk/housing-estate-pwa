@@ -5,15 +5,20 @@
   }
 
   .toolbar {
-      background-color: $colorMain;
-      position: relative;
-//    z-index: 2;
-  }
+    background-color: $colorMain;
+    position: relative;
 
-  .toolbar_link_label {
+    &_menu-icon{
+      display: block;
       color: white;
-      font-size: 1.1rem;
       font-weight: 300;
+    }
+
+    &_link-wrapper {
+      display: none;
+      margin-right: 20px;
+    }
+
   }
 
   .image-bg {
@@ -24,4 +29,35 @@
       background-position-y: top;
       background-position-x: right;
   }
+
+  @media (min-width: 700px) {
+
+    .toolbar {
+      &_menu-icon{
+        display: none;
+        color: white;
+      }
+
+    &_link-wrapper {
+      display: flex;
+      margin-right: 20px;
+    }
+
+    &_link {
+      margin: 0 12px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 300;
+      cursor: pointer;
+
+      &--active {
+        border-bottom: 3px solid $colorAccent;
+        color: $textAccent;
+      }
+    }
+    
+  }
+
+  }
+
 
