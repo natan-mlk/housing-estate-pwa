@@ -7,7 +7,8 @@
   .toolbar {
     background-color: $colorMain;
     position: relative;
-
+    z-index: 2;
+    
     &_menu-icon{
       display: block;
       color: white;
@@ -19,15 +20,6 @@
       margin-right: 20px;
     }
 
-  }
-
-  .image-bg {
-      height: 20vh;
-      width: 100%;
-      background-image: url('../assets/backgrounds/01bg.jpg');
-      background-size: cover;
-      background-position-y: top;
-      background-position-x: right;
   }
 
   @media (min-width: 700px) {
@@ -49,13 +41,14 @@
       font-size: 1.1rem;
       font-weight: 300;
       cursor: pointer;
+      border-bottom: 3px solid $colorMain;
 
       &--active {
         border-bottom: 3px solid $colorAccent;
         color: $textAccent;
       }
     }
-    
+
   }
 
   }

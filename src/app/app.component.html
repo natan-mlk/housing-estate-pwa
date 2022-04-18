@@ -9,7 +9,7 @@
   </button>
 
   <mat-menu #mainMenu="matMenu">
-    <button mat-menu-item routerLink="" >Aktualności</button>
+    <button mat-menu-item routerLink="news" >Aktualności</button>
     <button mat-menu-item routerLink="announcements" >Komunikaty</button>
     <button mat-menu-item routerLink="announcements" >Awarie</button>
     <button mat-menu-item routerLink="announcements" >Dyskusje</button>
@@ -21,7 +21,7 @@
   <span class="example-spacer"></span>
 
   <div class="toolbar_link-wrapper">
-  <div class="toolbar_link" routerLink="" routerLinkActive="toolbar_link--active" [routerLinkActiveOptions]="{exact:
+  <div class="toolbar_link" routerLink="news" routerLinkActive="toolbar_link--active" [routerLinkActiveOptions]="{exact:
     true}">Aktualności</div>
   <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Komunikaty</div>
   <div class="toolbar_link">Awarie</div>
@@ -35,14 +35,9 @@
   </button>
 </mat-toolbar>
 
-
-
 <mat-menu #userMenu="matMenu">
   <button mat-menu-item routerLink="user-profile" ><mat-icon>settings</mat-icon>Ustawienia profilu</button>
-  <button mat-menu-item><mat-icon>logout</mat-icon>Wyloguj</button>
+  <button mat-menu-item routerLink=""><mat-icon>logout</mat-icon>Wyloguj</button>
 </mat-menu>
-
-<div class="image-bg">
-</div>
 
 <router-outlet></router-outlet>

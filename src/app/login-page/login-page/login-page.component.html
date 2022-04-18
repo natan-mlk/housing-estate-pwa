@@ -1,0 +1,15 @@
+<div class="image-bg">
+</div>
+
+<div class="login-box">
+    <mat-form-field appearance="outline">
+      <mat-label>Login</mat-label>
+      <input matInput placeholder="">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" >
+      <mat-label>Hasło</mat-label>
+      <input matInput placeholder="" type="password" [type]="isPasswordHidden ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="isPasswordHidden = !isPasswordHidden">{{isPasswordHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+</div>

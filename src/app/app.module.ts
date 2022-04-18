@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { HomeNewsModule } from './home-news/home-news.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { AnnouncementsModule } from './announcements/announcements.module';
+import { LoginPageModule } from './login-page/login-page.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AnnouncementsModule } from './announcements/announcements.module';
     // feature modules below
     HomeNewsModule,
     UserProfileModule,
-    AnnouncementsModule
+    AnnouncementsModule,
+    LoginPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
