@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnnouncementsComponent } from './components/announcements/announcements.component';
+import { MaterialModule } from '../material.module';
 
 
 
@@ -9,7 +10,8 @@ import { AnnouncementsComponent } from './components/announcements/announcements
     AnnouncementsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ]
 })
 export class AnnouncementsModule { }

@@ -10,13 +10,16 @@ body {
     background-color: $workspaceBackground;
 }
 
+* {
+  box-sizing: border-box;
+}
 
 // global
 
-.image-bg {
+.image-header {
   height: 20%;
   width: 100%;
-  background-image: url('../assets/backgrounds/01bg.jpg');
+  background-image: url('./assets/backgrounds/01bg.jpg');
   background-size: cover;
   background-position-y: top;
   background-position-x: right;
