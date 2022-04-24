@@ -23,10 +23,10 @@ import { LoginPageModule } from './login-page/login-page.module';
     MaterialModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerImmediately'
     }),
+
+    // some info https://web.dev/customize-install/  https://web.dev/manifest-updates/ https://medium.com/poka-techblog/turn-your-angular-app-into-a-pwa-in-4-easy-steps-543510a9b626
     // feature modules below
     HomeNewsModule,
     UserProfileModule,
