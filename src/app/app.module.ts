@@ -11,6 +11,7 @@ import { HomeNewsModule } from './home-news/home-news.module';
 import { UserProfileModule } from './user-profile/user-profile.module';
 import { AnnouncementsModule } from './announcements/announcements.module';
 import { LoginPageModule } from './login-page/login-page.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LoginPageModule } from './login-page/login-page.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule, 
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerImmediately'
