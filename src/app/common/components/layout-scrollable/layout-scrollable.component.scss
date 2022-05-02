@@ -1,0 +1,11 @@
+:host {
+    height: calc(100% - 56px);
+    overflow: auto;
+    display: block;
+  }
+  
+  @media (min-width: 600px) {
+    :host {
+      height: calc(100% - 64px);
+    }
+  }
