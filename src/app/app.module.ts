@@ -12,6 +12,7 @@ import { UserProfileModule } from './user-profile/user-profile.module';
 import { AnnouncementsModule } from './announcements/announcements.module';
 import { LoginPageModule } from './login-page/login-page.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AppCommonModule } from './common/common.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule, 
+    HttpClientModule,
+    AppCommonModule, 
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerImmediately'
