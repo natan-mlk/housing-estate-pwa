@@ -12,4 +12,5 @@
       <input matInput placeholder="" type="password" [type]="isPasswordHidden ? 'password' : 'text'">
       <mat-icon matSuffix (click)="isPasswordHidden = !isPasswordHidden">{{isPasswordHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
     </mat-form-field>
+    <button mat-flat-button color="accent" (click)="onLogin()">Zaloguj</button>
 </div>
