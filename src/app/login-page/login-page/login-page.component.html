@@ -2,15 +2,17 @@
 </div>
 
 <div class="login-box">
+  <form [formGroup]="formGroup">
     <mat-form-field appearance="outline">
       <mat-label>Login</mat-label>
-      <input matInput placeholder="">
+      <input matInput placeholder="" formControlName="login">
     </mat-form-field>
   
     <mat-form-field appearance="outline" >
       <mat-label>Hasło</mat-label>
-      <input matInput placeholder="" type="password" [type]="isPasswordHidden ? 'password' : 'text'">
+      <input matInput placeholder="" formControlName="password" type="password" [type]="isPasswordHidden ? 'password' : 'text'">
       <mat-icon matSuffix (click)="isPasswordHidden = !isPasswordHidden">{{isPasswordHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
     </mat-form-field>
     <button mat-flat-button color="accent" (click)="onLogin()">Zaloguj</button>
+    </form>
 </div>

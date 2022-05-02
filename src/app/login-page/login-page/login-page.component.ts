@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -11,15 +12,22 @@ export class LoginPageComponent implements OnInit {
   public username: string = 'a.natan.mlk@gmail.com';
   public password: string = 'test';
 
-  API_URL='https://mieszkancynowekolibki.pl:8008/api'
+  API_URL='https://mieszkancynowekolibki.pl:8008/api';
+
+  formGroup = new FormGroup({
+    login: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required]),
+  });
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  // TODO dodaj jakąś walidację, może niech się disabluje button na dole jeśli nic się nie wpisze
   onLogin(){
     console.log('zaloguj');
+    console.log(this.formGroup.value);
     
     /* na adres https://mieszkancynowekolibki.pl:8008/api/public/login/  
     muszę wysłać body: {"username":"a.natan.mlk@gmail.com","password":"test"} a w Headers mieć
