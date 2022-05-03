@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from 'src/app/common/services/rest.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private restService: RestService
+  ) { }
 
   ngOnInit(): void {
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.restService.fetchData().subscribe(
+      response => {
+        console.log('RESP, ', response);
+        
+      }
+    )
   }
 
 }

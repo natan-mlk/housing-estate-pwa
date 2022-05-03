@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { User } from './user';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { User } from './user';
 })
 export class AuthService {
 
-  userSubject = new Subject<User>();
+  userSubject = new BehaviorSubject<User | null>(null);
 
   constructor(
     private httpClient: HttpClient

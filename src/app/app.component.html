@@ -3,41 +3,43 @@
     <mat-icon>menu</mat-icon>
   </button> -->
 
-  <button mat-icon-button class="toolbar_menu-icon"
-  [matMenuTriggerFor]="mainMenu" aria-label="..">
-  <mat-icon>menu</mat-icon>
+  <button *ngIf="isUserAuth" mat-icon-button class="toolbar_menu-icon" [matMenuTriggerFor]="mainMenu" aria-label="..">
+    <mat-icon>menu</mat-icon>
   </button>
 
   <mat-menu #mainMenu="matMenu">
-    <button mat-menu-item routerLink="news" >Aktualności</button>
-    <button mat-menu-item routerLink="announcements" >Komunikaty</button>
-    <button mat-menu-item routerLink="announcements" >Awarie</button>
-    <button mat-menu-item routerLink="announcements" >Dyskusje</button>
-    <button mat-menu-item routerLink="announcements" >Dokumenty</button>
+    <button mat-menu-item routerLink="news">Aktualności</button>
+    <button mat-menu-item routerLink="announcements">Komunikaty</button>
+    <button mat-menu-item routerLink="announcements">Awarie</button>
+    <button mat-menu-item routerLink="announcements">Dyskusje</button>
+    <button mat-menu-item routerLink="announcements">Dokumenty</button>
   </mat-menu>
-  
+
   <span class="toolbar_menu-icon">NoweKolibki</span>
 
   <span class="example-spacer"></span>
 
-  <div class="toolbar_link-wrapper">
-  <div class="toolbar_link" routerLink="news" routerLinkActive="toolbar_link--active" [routerLinkActiveOptions]="{exact:
+  <div class="toolbar_link-wrapper" *ngIf="isUserAuth">
+    <div class="toolbar_link" routerLink="news" routerLinkActive="toolbar_link--active" [routerLinkActiveOptions]="{exact:
     true}">Aktualności</div>
-  <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Komunikaty</div>
-  <div class="toolbar_link">Awarie</div>
-  <div class="toolbar_link">Dyskusje</div>
-  <div class="toolbar_link">Dokumenty</div>
-</div>
+    <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Komunikaty</div>
+    <div class="toolbar_link">Awarie</div>
+    <div class="toolbar_link">Dyskusje</div>
+    <div class="toolbar_link">Dokumenty</div>
+  </div>
 
-  <button mat-icon-button color="accent"
-    [matMenuTriggerFor]="userMenu" aria-label="..">
+  <button *ngIf="isUserAuth" mat-icon-button color="accent" [matMenuTriggerFor]="userMenu" aria-label="..">
     <mat-icon>person</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-menu #userMenu="matMenu">
-  <button mat-menu-item routerLink="user-profile" ><mat-icon>settings</mat-icon>Ustawienia profilu</button>
-  <button mat-menu-item routerLink=""><mat-icon>logout</mat-icon>Wyloguj</button>
+  <button mat-menu-item routerLink="user-profile">
+    <mat-icon>settings</mat-icon>Ustawienia profilu
+  </button>
+  <button mat-menu-item routerLink="">
+    <mat-icon>logout</mat-icon>Wyloguj
+  </button>
 </mat-menu>
 
 <app-layout-scrollable>
