@@ -8,6 +8,8 @@ import { RestService } from 'src/app/common/services/rest.service';
 })
 export class DashboardComponent implements OnInit {
 
+  posts: null | any[] = null;
+
   constructor(
     private restService: RestService
   ) { }
@@ -20,7 +22,7 @@ export class DashboardComponent implements OnInit {
     this.restService.fetchData().subscribe(
       response => {
         console.log('RESP, ', response);
-        
+        this.posts = response.content;
       }
     )
   }

@@ -9,8 +9,13 @@
     position: relative;
     z-index: 2;
     
-    &_menu-icon{
+    &_menu-icon {
       display: block;
+      color: white;
+      font-weight: 300;
+    }
+
+    &_menu-title {
       color: white;
       font-weight: 300;
     }
@@ -27,7 +32,6 @@
     .toolbar {
       &_menu-icon{
         display: none;
-        color: white;
       }
 
     &_link-wrapper {

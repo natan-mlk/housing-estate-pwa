@@ -18,11 +18,11 @@ export class RestService {
 
   fetchData(): Observable<any> {
     return this.authService.userSubject.pipe(
-      take(1),
+      take(1), /* jeśli niedałbym take(1) albo zaraz po tym zapytaniu .unsubscribe, to bym dalej bez sensu 'obserwował' Subject z userData po tym zapytaniu */
       exhaustMap( // run second Obs after first one completes and returns value
         userData => {
           return this.httpClient.get(
-            'https://mieszkancynowekolibki.pl:8008/api/private/news/newsList?page=1&number=3',
+            'https://mieszkancynowekolibki.pl:8008/api/private/news/newsList?page=1&number=5',
             { headers: this.getAuthHeaders(userData) }
           )
         }
