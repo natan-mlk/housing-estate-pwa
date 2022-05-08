@@ -2,7 +2,7 @@
 </div>
 <app-layout-for-posts>
 <mat-card *ngFor="let post of posts " class="card-post">
-  <mat-card-subtitle>{{post.date}}</mat-card-subtitle>
+  <mat-card-subtitle>{{getDate(post.date)}}</mat-card-subtitle>
   <mat-card-title>{{post.titleText}}</mat-card-title>
   <mat-card-content>
     {{post.contentText}}

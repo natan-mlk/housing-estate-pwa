@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from 'src/app/common/services/rest.service';
+import { DateAndTimeService, RestService } from 'src/app/common/common.module';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,14 +11,19 @@ export class DashboardComponent implements OnInit {
   posts: null | any[] = null;
 
   constructor(
-    private restService: RestService
+    private restService: RestService,
+    private dateService: DateAndTimeService
   ) { }
 
   ngOnInit(): void {
     this.fetchData();
   }
 
-  fetchData() {
+  getDate(dateBackend: string): string {
+    return this.dateService.getFormattedDate(dateBackend);
+  }
+
+  private fetchData() {
     this.restService.fetchData().subscribe(
       response => {
         console.log('RESP, ', response);

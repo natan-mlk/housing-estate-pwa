@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LayoutForPostsComponent } from '../common/components/layout-for-posts/layout-for-posts.component';
 import { AppCommonModule } from '../common/common.module';
 
 @NgModule({
