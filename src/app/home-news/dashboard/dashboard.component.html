@@ -5,13 +5,12 @@
   <mat-card-subtitle>{{getDate(post.date)}}</mat-card-subtitle>
   <mat-card-title>{{post.titleText}}</mat-card-title>
   <mat-card-content>
-    {{post.contentText}}
+    {{post.contentText | CutTextCharactersPipe}}
   </mat-card-content>
-  <mat-divider inset></mat-divider>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+  <mat-card-actions align="end">
+    <button color="accent" mat-flat-button >Czytaj całość / komentuj</button>
   </mat-card-actions>
+  <mat-divider inset></mat-divider>
   <mat-card-footer>
     FOOTER
   </mat-card-footer>
