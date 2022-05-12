@@ -1,6 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { DateAndTimeService, RestService } from 'src/app/common/common.module';
 
+export interface CommentInterface {
+  content: string;
+date: string;
+groupId: number;
+newsRequest: any;
+username: string;
+}
+export interface PostInterface {
+  comments: CommentInterface[];
+  content: string;
+  contentText: string;
+  date: string;
+  id: number;
+  title: string;
+  titleText: string;
+}
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -35,9 +51,19 @@ export class DashboardComponent implements OnInit {
 4: {id: 172, title: '{"blocks":[{"key":"7v4qc","text":"Tabela z umowami…:[],"entityRanges":[],"data":{}}],"entityMap":{}}', titleText: 'Tabela z umowami', date: '2022-02-03T21:03:19.466+00:00', content: '{"blocks":[{"key":"d6f63","text":"UL. BERNADOWSKA …:[],"entityRanges":[],"data":{}}],"entityMap":{}}', …}
         ]
         */
+
+        this.findNewestComment(response)
         this.posts = response;
       }
     )
+  }
+
+  private findNewestComment(response: PostInterface[]) {
+    for (let post of response) {
+      // weź każdy post i kolekcję komentarzy z niego
+      console.log(' POSTTTTTT', post);
+      
+    }
   }
 
 }

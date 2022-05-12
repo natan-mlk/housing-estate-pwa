@@ -7,6 +7,11 @@
   <mat-card-content>
     {{post.contentText | CutTextCharactersPipe}}
   </mat-card-content>
+
+  <mat-card-subtitle>Ostattni komentarz: </mat-card-subtitle>
+  <mat-card-content>
+    {{post.contentText | CutTextCharactersPipe}}
+  </mat-card-content>
   <mat-card-actions align="end">
     <button color="accent" mat-flat-button >Czytaj całość / komentuj</button>
   </mat-card-actions>
