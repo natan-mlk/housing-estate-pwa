@@ -10,6 +10,7 @@ username: string;
 }
 export interface PostInterface {
   comments: CommentInterface[];
+  recentComment: CommentInterface;
   content: string;
   contentText: string;
   date: string;
@@ -60,9 +61,7 @@ export class DashboardComponent implements OnInit {
 
   private findNewestComment(response: PostInterface[]) {
     for (let post of response) {
-      // weź każdy post i kolekcję komentarzy z niego
-      console.log(' POSTTTTTT', post);
-      
+      // weź każdy post i kolekcję komentarzy z niego i dodaj jako recetComment najnowszy komentarz 
     }
   }
 
