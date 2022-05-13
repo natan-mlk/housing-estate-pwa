@@ -1,3 +1,20 @@
+@import "./styles-assets/variables";
+
 .card-post {
   margin-bottom: 30px;
+
+  &_text {
+    font-size: 0.95rem;
+  }
+
+  &_last-comment {
+    color: $textAccent;
+    font-size: 1rem;
+
+    &_date {
+      color: rgba(0, 0, 0, 0.54);
+    }
+  }
+
 }
+
