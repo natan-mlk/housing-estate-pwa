@@ -1,6 +1,7 @@
 :host {
     height: calc(100% - 56px);
     overflow: auto;
+    overflow-y: scroll;
     display: block;
   }
   

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { exhaustMap, forkJoin, map, mergeMap, Observable, of, take } from 'rxjs';
 import { AuthService } from 'src/app/login-page/auth.service';
 import { User } from 'src/app/login-page/user';
+import { AllCommentsInterfaceOrigin, PostInterfaceOrigin } from '../models/post-and-comment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -56,16 +57,16 @@ export class RestService {
     )
   }
 
-  getPostWithComments(postId: string): Observable<any[]> {
+  getPostWithComments(postId: string): Observable<[PostInterfaceOrigin, AllCommentsInterfaceOrigin]> {
     return this.authService.userSubject.pipe(
-      take(1), /* jeśli niedałbym take(1) albo zaraz po tym zapytaniu .unsubscribe, to bym dalej bez sensu 'obserwował' Subject z userData po tym zapytaniu */
-      exhaustMap( // run second Obs after first one completes and returns value
+      take(1),
+      exhaustMap( 
         userData => {
-          const postRequest$: Observable<any> = this.httpClient.get(
+          const postRequest$: Observable<PostInterfaceOrigin> = this.httpClient.get<PostInterfaceOrigin>(
             `https://mieszkancynowekolibki.pl:8008/api/private/news/single?newsIndex=${postId}`,
             { headers: this.getAuthHeaders(userData) }
           );
-          const commentsRequest$: Observable<any> = this.httpClient.get(
+          const commentsRequest$: Observable<AllCommentsInterfaceOrigin> = this.httpClient.get<AllCommentsInterfaceOrigin>(
             `https://mieszkancynowekolibki.pl:8008/api/private/news/single/${postId}/comments?page=0&commentsNumber=9999`,
             { headers: this.getAuthHeaders(userData) });
             return forkJoin([postRequest$, commentsRequest$])

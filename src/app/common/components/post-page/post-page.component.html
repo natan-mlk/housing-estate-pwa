@@ -1,1 +1,22 @@
-<p>post-page works!</p>
+<app-layout-for-posts>
+    <mat-card class="card-post" *ngIf="post">
+      <mat-card-subtitle>{{post.date | FormatBackendDatePipe}}</mat-card-subtitle>
+      <mat-card-title>{{post.titleText}}</mat-card-title>
+      <mat-card-content>
+        <span class="card-post_text">{{post.contentText}}</span>
+      </mat-card-content>
+  
+      <!-- <ng-container *ngIf="post.comments.length">
+        <p class="card-post_last-comment">Ostatni komentarz:</p>
+        <mat-card-content>
+          <span class="card-post_last-comment_date">
+            {{post.comments[0].date | FormatBackendDatePipe}}
+          </span><br>
+            {{post.comments[0].content | CutCommentCharactersPipe}}
+        </mat-card-content>
+      </ng-container> -->
+      <!-- <mat-card-actions align="end">
+        <button color="accent" mat-flat-button>Czytaj całość / komentuj</button>
+      </mat-card-actions> -->
+    </mat-card>
+  </app-layout-for-posts>
