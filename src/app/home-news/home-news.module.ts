@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppCommonModule } from '../common/common.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { AppCommonModule } from '../common/common.module';
     CommonModule,
     MaterialModule,
     AppCommonModule,
+    RouterModule
   ]
 })
 export class HomeNewsModule { }

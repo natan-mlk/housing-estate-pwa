@@ -16,7 +16,7 @@ export class RestService {
     private authService: AuthService
   ) { }
 
-  fetchData(): Observable<any> {
+  getAllPostsWithComments(): Observable<any> {
     return this.authService.userSubject.pipe(
       take(1), /* jeśli niedałbym take(1) albo zaraz po tym zapytaniu .unsubscribe, to bym dalej bez sensu 'obserwował' Subject z userData po tym zapytaniu */
       exhaustMap( // run second Obs after first one completes and returns value
@@ -52,6 +52,24 @@ export class RestService {
             )
           )
         }
+      )
+    )
+  }
+
+  getPostWithComments(postId: string): Observable<any[]> {
+    return this.authService.userSubject.pipe(
+      take(1), /* jeśli niedałbym take(1) albo zaraz po tym zapytaniu .unsubscribe, to bym dalej bez sensu 'obserwował' Subject z userData po tym zapytaniu */
+      exhaustMap( // run second Obs after first one completes and returns value
+        userData => {
+          const postRequest$: Observable<any> = this.httpClient.get(
+            `https://mieszkancynowekolibki.pl:8008/api/private/news/single?newsIndex=${postId}`,
+            { headers: this.getAuthHeaders(userData) }
+          );
+          const commentsRequest$: Observable<any> = this.httpClient.get(
+            `https://mieszkancynowekolibki.pl:8008/api/private/news/single/${postId}/comments?page=0&commentsNumber=9999`,
+            { headers: this.getAuthHeaders(userData) });
+            return forkJoin([postRequest$, commentsRequest$])
+          }
       )
     )
   }

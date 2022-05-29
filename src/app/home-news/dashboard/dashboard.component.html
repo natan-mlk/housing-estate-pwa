@@ -1,7 +1,7 @@
 <div class="image-header">
 </div>
 <app-layout-for-posts>
-  <mat-card *ngFor="let post of posts " class="card-post">
+  <mat-card *ngFor="let post of posts " class="card-post" [routerLink]="[post.id]">
     <mat-card-subtitle>{{getDate(post.date)}}</mat-card-subtitle>
     <mat-card-title>{{post.titleText}}</mat-card-title>
     <mat-card-content>
@@ -9,7 +9,6 @@
     </mat-card-content>
 
     <ng-container *ngIf="post.comments.length">
-      <!-- <mat-card-subtitle>Ostatni komentarz: </mat-card-subtitle> -->
       <p class="card-post_last-comment">Ostatni komentarz:</p>
       <mat-card-content>
         <span class="card-post_last-comment_date">

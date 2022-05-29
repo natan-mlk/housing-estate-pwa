@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private fetchData() {
-    this.restService.fetchData().subscribe(
+    this.restService.getAllPostsWithComments().subscribe(
       response => {
         /* [
           0: {id: 184, title: '{"blocks":[{"key":"dmi0k","text":"Rozliczenie Medi…:[],"entityRanges":[],"data":{}}],"entityMap":{}}', titleText: 'Rozliczenie Mediów ', date: '2022-03-22T21:47:11.341+00:00', content: '{"blocks":[{"key":"98fas","text":"Subject: Rozlicz…:[],"entityRanges":[],"data":{}}],"entityMap":{}}', …}
@@ -35,11 +35,13 @@ export class DashboardComponent implements OnInit {
           4: {id: 172, title: '{"blocks":[{"key":"7v4qc","text":"Tabela z umowami…:[],"entityRanges":[],"data":{}}],"entityMap":{}}', titleText: 'Tabela z umowami', date: '2022-02-03T21:03:19.466+00:00', content: '{"blocks":[{"key":"d6f63","text":"UL. BERNADOWSKA …:[],"entityRanges":[],"data":{}}],"entityMap":{}}', …}
         ]
         */
-       let copiedPosts = JSON.parse(JSON.stringify(response));
-       this.findNewestComment(copiedPosts);
-       this.posts = copiedPosts;
+      /* let copiedPosts = JSON.parse(JSON.stringify(response));
+        this.findNewestComment(copiedPosts);
+        this.posts = copiedPosts; 
+        na razie wyłączam szukanie ostatniego. Zakładam, że będzie to zawsze pozycja [0] w tablicy. Może się to zmieni w przyszłości. Dzięki temu przekazuję potem całość posta do komponentu post i ma on wszystkie komentarze*/
+        this.posts = response;
        console.log('RESP, ', response);
-       console.log('copiedPosts, ', copiedPosts);
+       console.log('copiedPosts, ', this.posts);
       }
     )
   }

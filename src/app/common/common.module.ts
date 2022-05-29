@@ -5,6 +5,7 @@ import { MaterialModule } from '../material.module';
 import { LayoutForPostsComponent } from './components/layout-for-posts/layout-for-posts.component';
 import { CutCommentCharactersPipe, CutPostCharactersPipe, FormatBackendDatePipe } from './pipes';
 import { PostPageComponent } from './components/post-page/post-page.component';
+import { RouterModule } from '@angular/router';
 // import { CommentInterface } from './models/post-and-comment.model';
 
 /* poniższe eksporty gwarantują mi, że mogę korzystać z tych serwisów wyłącznie importując je z modułu np: import {RestService} from 'src/app/common/common.module' */
@@ -24,6 +25,7 @@ export { RestService } from './services/rest.service';
   imports: [
     CommonModule,
     MaterialModule,
+    RouterModule
   ],
   exports: [
     LayoutScrollableComponent,
