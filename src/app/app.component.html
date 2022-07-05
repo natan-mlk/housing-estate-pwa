@@ -13,6 +13,7 @@
     <button mat-menu-item routerLink="announcements">Awarie</button>
     <button mat-menu-item routerLink="announcements">Dyskusje</button>
     <button mat-menu-item routerLink="announcements">Dokumenty</button>
+    <button mat-menu-item routerLink="announcements">Giełda</button>
   </mat-menu>
 
   <span class="toolbar_menu-title" routerLink="">NoweKolibki</span>
@@ -26,6 +27,7 @@
     <div class="toolbar_link">Awarie</div>
     <div class="toolbar_link">Dyskusje</div>
     <div class="toolbar_link">Dokumenty</div>
+    <div class="toolbar_link">Giełda</div>
   </div>
 
   <button *ngIf="isUserAuth" mat-icon-button color="accent" [matMenuTriggerFor]="userMenu" aria-label="..">
