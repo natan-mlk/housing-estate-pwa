@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs';
 import { RestService } from '../../services/rest.service';
 import { AllCommentsInterfaceOrigin, PostInterfaceOrigin, PostInterface } from '../../models/post-and-comment.model';
+import { MatDialog } from '@angular/material/dialog';
+import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
 
 @Component({
   selector: 'app-post-page',
@@ -16,7 +18,8 @@ export class PostPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private restService: RestService
+    private restService: RestService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -34,10 +37,20 @@ export class PostPageComponent implements OnInit {
         const postAndComments: [PostInterfaceOrigin, AllCommentsInterfaceOrigin] = postComments;
         this.post = postAndComments[0];
         this.allComments = postAndComments[1];
-        console.log('allComments', this.allComments.content);
-        
       }
     )
   }
 
+  openCommentDialog(): void {
+      const dialogRef = this.dialog.open(CommentDialogComponent, {
+        width: '250px',
+        data: {name: 'Mieszkaniec'},
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed', result);
+        // this.animal = result;
+      });
+    }
+  
 }

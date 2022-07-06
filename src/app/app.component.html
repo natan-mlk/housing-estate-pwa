@@ -24,10 +24,10 @@
     <div class="toolbar_link" routerLink="news" routerLinkActive="toolbar_link--active" [routerLinkActiveOptions]="{exact:
     true}">Aktualności</div>
     <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Komunikaty</div>
-    <div class="toolbar_link">Awarie</div>
-    <div class="toolbar_link">Dyskusje</div>
-    <div class="toolbar_link">Dokumenty</div>
-    <div class="toolbar_link">Giełda</div>
+    <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Awarie</div>
+    <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Dyskusje</div>
+    <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Dokumenty</div>
+    <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Giełda</div>
   </div>
 
   <button *ngIf="isUserAuth" mat-icon-button color="accent" [matMenuTriggerFor]="userMenu" aria-label="..">
