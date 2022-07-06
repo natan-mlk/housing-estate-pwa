@@ -5,18 +5,30 @@
       <mat-card-content>
         <span class="card-post_text">{{post.contentText}}</span>
       </mat-card-content>
-  
-      <!-- <ng-container *ngIf="post.comments.length">
-        <p class="card-post_last-comment">Ostatni komentarz:</p>
+
+      <mat-card-actions align="end">
+        <button color="accent" mat-flat-button>Skomentuj</button>
+      </mat-card-actions>
+
+      
+      <ng-container *ngIf="allComments!.content.length > 0">
+        <mat-card-title>Komentarze: </mat-card-title>
         <mat-card-content>
-          <span class="card-post_last-comment_date">
-            {{post.comments[0].date | FormatBackendDatePipe}}
-          </span><br>
-            {{post.comments[0].content | CutCommentCharactersPipe}}
+          <div *ngFor="let comment of allComments!.content" class="">
+            <mat-card-subtitle> {{comment.date | FormatBackendDatePipe}}</mat-card-subtitle>
+              <p class="comment-container_text">
+                {{comment.content}}
+              </p>
+              <p>- Mieszkaniec</p>
+              <mat-divider></mat-divider>
+          </div>
         </mat-card-content>
-      </ng-container> -->
-      <!-- <mat-card-actions align="end">
-        <button color="accent" mat-flat-button>Czytaj całość / komentuj</button>
-      </mat-card-actions> -->
+
+        <mat-card-actions align="end">
+          <button color="accent" mat-flat-button>Skomentuj</button>
+        </mat-card-actions>
+
+      </ng-container>
+
     </mat-card>
   </app-layout-for-posts>

@@ -1,0 +1,14 @@
+
+.card-post {
+    &_text {
+        overflow-wrap: break-word;
+    }
+}
+
+.comment-container {
+    padding-top: 10px;
+
+    &_text {
+        overflow-wrap: break-word;
+    }
+}

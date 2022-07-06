@@ -9,6 +9,8 @@ import { User } from './user';
 export class AuthService {
 
   userSubject = new BehaviorSubject<User | null>(null);
+  // private urlApiAddress: string = 'https://mieszkancynowekolibki.pl:8008/api/';
+  private urlApiAddress: string = 'https://mieszkancyrivus.pl:8008/api/';
 
   constructor(
     private httpClient: HttpClient
@@ -16,7 +18,7 @@ export class AuthService {
 
   sendLoginRequest(login: string, password: string): Observable<any> {
     return this.httpClient.post(
-      'https://mieszkancynowekolibki.pl:8008/api/public/login/',
+      this.urlApiAddress +  'public/login/',
       { "username": "a.natan.mlk@gmail.com", "password": "test" },
       {
         headers: {

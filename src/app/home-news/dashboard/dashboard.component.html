@@ -1,7 +1,7 @@
 <div class="image-header">
 </div>
 <app-layout-for-posts>
-  <mat-card *ngFor="let post of posts " class="card-post" [routerLink]="[post.id]">
+  <mat-card *ngFor="let post of posts" class="card-post" [routerLink]="[post.id]">
     <mat-card-subtitle>{{getDate(post.date)}}</mat-card-subtitle>
     <mat-card-title>{{post.titleText}}</mat-card-title>
     <mat-card-content>

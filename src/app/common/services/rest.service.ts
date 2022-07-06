@@ -12,6 +12,9 @@ export class RestService {
 
   // https://mieszkancynowekolibki.pl:8008/api  <-- API_URL
 
+  // private urlApiAddress: string = 'https://mieszkancynowekolibki.pl:8008/api/';
+  private urlApiAddress: string = 'https://mieszkancyrivus.pl:8008/api/';
+  
   constructor(
     private httpClient: HttpClient,
     private authService: AuthService
@@ -23,7 +26,7 @@ export class RestService {
       exhaustMap( // run second Obs after first one completes and returns value
         userData => {
           const postsRequest$: Observable<any> = this.httpClient.get(
-            'https://mieszkancynowekolibki.pl:8008/api/private/news/newsList?page=1&number=5',
+            this.urlApiAddress + 'private/news/newsList?page=1&number=5',
             { headers: this.getAuthHeaders(userData) }
           )
           return postsRequest$.pipe(
@@ -34,7 +37,7 @@ export class RestService {
 
                 for (let post of postsCollection) {
                   const postWithCommentsRequest$: Observable<any> = this.httpClient.get(
-                    `https://mieszkancynowekolibki.pl:8008/api/private/news/single/${post.id}/comments?page=0&commentsNumber=9999`,
+                    this.urlApiAddress +  `private/news/single/${post.id}/comments?page=0&commentsNumber=9999`,
                     { headers: this.getAuthHeaders(userData) }).pipe(
                       map<any, any>(
                         comments => {
@@ -63,11 +66,11 @@ export class RestService {
       exhaustMap( 
         userData => {
           const postRequest$: Observable<PostInterfaceOrigin> = this.httpClient.get<PostInterfaceOrigin>(
-            `https://mieszkancynowekolibki.pl:8008/api/private/news/single?newsIndex=${postId}`,
+            this.urlApiAddress +  `private/news/single?newsIndex=${postId}`,
             { headers: this.getAuthHeaders(userData) }
           );
           const commentsRequest$: Observable<AllCommentsInterfaceOrigin> = this.httpClient.get<AllCommentsInterfaceOrigin>(
-            `https://mieszkancynowekolibki.pl:8008/api/private/news/single/${postId}/comments?page=0&commentsNumber=9999`,
+            this.urlApiAddress + `private/news/single/${postId}/comments?page=0&commentsNumber=9999`,
             { headers: this.getAuthHeaders(userData) });
             return forkJoin([postRequest$, commentsRequest$])
           }

@@ -1,10 +1,11 @@
 @import "./styles-assets/variables";
 
-.card-post {
+.card-post { 
   margin-bottom: 30px;
 
   &_text {
     font-size: 0.95rem;
+    overflow-wrap: break-word;
   }
 
   &_last-comment {

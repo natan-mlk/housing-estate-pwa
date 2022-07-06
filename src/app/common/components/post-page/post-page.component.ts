@@ -34,6 +34,8 @@ export class PostPageComponent implements OnInit {
         const postAndComments: [PostInterfaceOrigin, AllCommentsInterfaceOrigin] = postComments;
         this.post = postAndComments[0];
         this.allComments = postAndComments[1];
+        console.log('allComments', this.allComments.content);
+        
       }
     )
   }
