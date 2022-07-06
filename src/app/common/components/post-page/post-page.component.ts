@@ -43,7 +43,8 @@ export class PostPageComponent implements OnInit {
 
   openCommentDialog(): void {
       const dialogRef = this.dialog.open(CommentDialogComponent, {
-        width: '250px',
+        maxWidth: '95vw',
+        panelClass: 'comment-dialog',
         data: {name: 'Mieszkaniec'},
       });
   

@@ -16,4 +16,8 @@ export class CommentDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onCancelClick(): void {
+    this.dialogRef.close();
+  }
+
 }

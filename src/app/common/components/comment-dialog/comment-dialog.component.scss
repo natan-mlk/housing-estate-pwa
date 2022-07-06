@@ -1,0 +1,13 @@
+.comment-field {
+    width: 75vw;
+}
+
+.comment-textarea {
+    height: 40vh;
+}
+
+@media (min-width: 700px) {
+    .comment-field {
+        width: 60vw;
+    }
+}

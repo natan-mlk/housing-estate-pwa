@@ -1,1 +1,17 @@
-<p>comment-dialog works!</p>
+<div mat-dialog-content>
+  <mat-form-field class="comment-field" appearance="fill">
+    <mat-label>Napisz komentarz</mat-label>
+    <textarea matInput class="comment-textarea"></textarea>
+  </mat-form-field>
+<p>
+      <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Podpis (opcjonalnie)</mat-label>
+    <input matInput placeholder="Mieszkaniec" value="">
+  </mat-form-field>
+</p>
+
+</div>
+<div mat-dialog-actions align="end">
+  <button color="primary" mat-stroked-button (click)="onCancelClick()">Anuluj</button>
+  <button color="accent" mat-flat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Wyślij komentarz</button>
+</div>

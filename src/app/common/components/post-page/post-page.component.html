@@ -14,7 +14,7 @@
       <ng-container *ngIf="allComments!.content.length > 0">
         <mat-card-title>Komentarze: </mat-card-title>
         <mat-card-content>
-          <div *ngFor="let comment of allComments!.content" class="">
+          <div *ngFor="let comment of allComments!.content" class="comment-container">
             <mat-card-subtitle> {{comment.date | FormatBackendDatePipe}}</mat-card-subtitle>
               <p class="comment-container_text">
                 {{comment.content}}
@@ -23,11 +23,6 @@
               <mat-divider></mat-divider>
           </div>
         </mat-card-content>
-
-        <mat-card-actions align="end">
-          <button color="accent" mat-flat-button>Skomentuj</button>
-        </mat-card-actions>
-
       </ng-container>
 
     </mat-card>
