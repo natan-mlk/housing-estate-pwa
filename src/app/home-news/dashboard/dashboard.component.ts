@@ -10,7 +10,7 @@ import { PostInterface } from 'src/app/common/models/post-and-comment.model';
 export class DashboardComponent implements OnInit {
 
   posts: null | any[] = null;
-
+  isDataLoading: boolean = true;
   constructor(
     private restService: RestService,
     private dateService: DateAndTimeService
@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
         this.posts = copiedPosts; 
         na razie wyłączam szukanie ostatniego. Zakładam, że będzie to zawsze pozycja [0] w tablicy. Może się to zmieni w przyszłości. Dzięki temu przekazuję potem całość posta do komponentu post i ma on wszystkie komentarze*/
         this.posts = response;
+        this.isDataLoading = false;
        console.log('RESP, ', response);
        console.log('copiedPosts, ', this.posts);
       }
