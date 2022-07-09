@@ -1,5 +1,9 @@
 <app-layout-for-posts>
-    <mat-card class="card-post" *ngIf="post">
+  <div class="spinner-box" *ngIf="isDataLoading">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+
+    <mat-card class="card-post" *ngIf="post && !isDataLoading">
       <mat-card-subtitle>{{post.date | FormatBackendDatePipe}}</mat-card-subtitle>
       <mat-card-title>{{post.titleText}}</mat-card-title>
       <mat-card-content>

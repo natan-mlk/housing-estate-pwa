@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { mergeMap } from 'rxjs';
+import { mergeMap, Observable } from 'rxjs';
 import { RestService } from '../../services/rest.service';
 import { AllCommentsInterfaceOrigin, PostInterfaceOrigin, PostInterface } from '../../models/post-and-comment.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,6 +20,8 @@ export class PostPageComponent implements OnInit {
 
   post: PostInterfaceOrigin | null = null;
   allComments: AllCommentsInterfaceOrigin | null = null;
+  isDataLoading: boolean = true;
+  postId: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -32,18 +34,23 @@ export class PostPageComponent implements OnInit {
     .pipe(
       mergeMap(
         param => {
-          const postId: string = param['postId'];
-          return this.restService.getPostWithComments(postId);
+          this.postId = param['postId'];
+          return this.requestForPostWithComments();
         }
       )
     )
     .subscribe(
-      postComments => {
-        const postAndComments: [PostInterfaceOrigin, AllCommentsInterfaceOrigin] = postComments;
+      postWithComments => {
+        const postAndComments: [PostInterfaceOrigin, AllCommentsInterfaceOrigin] = postWithComments;
         this.post = postAndComments[0];
         this.allComments = postAndComments[1];
+        this.isDataLoading = false;
       }
     )
+  }
+
+  private requestForPostWithComments(): Observable<[PostInterfaceOrigin, AllCommentsInterfaceOrigin]>{
+    return this.restService.getPostWithComments(this.postId);
   }
 
   openCommentDialog(): void {
@@ -57,8 +64,21 @@ export class PostPageComponent implements OnInit {
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed', result);
-        // this.animal = result;
+        if(result) {
+          this.isDataLoading = true;
+          this.requestForPostWithComments().subscribe(
+            {
+              next: (postWithComments) => {
+                const postAndComments: [PostInterfaceOrigin, AllCommentsInterfaceOrigin] = postWithComments;
+                this.post = postAndComments[0];
+                this.allComments = postAndComments[1];
+                setTimeout(
+                  ()=>this.isDataLoading = false, 1000
+                );
+              }
+            }
+          )
+        }
       });
     }
   
