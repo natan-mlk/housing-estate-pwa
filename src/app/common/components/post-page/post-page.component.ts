@@ -6,6 +6,11 @@ import { AllCommentsInterfaceOrigin, PostInterfaceOrigin, PostInterface } from '
 import { MatDialog } from '@angular/material/dialog';
 import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
 
+export interface CommentDialogInterface {
+  postId: number,
+  userName?: string
+}
+
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
@@ -45,7 +50,10 @@ export class PostPageComponent implements OnInit {
       const dialogRef = this.dialog.open(CommentDialogComponent, {
         maxWidth: '95vw',
         panelClass: 'comment-dialog',
-        data: {name: 'Mieszkaniec'},
+        data: {
+          postId : this.post?.id,
+          userName: 'Mieszkaniec'
+        },
       });
   
       dialogRef.afterClosed().subscribe(result => {

@@ -91,4 +91,25 @@ export class RestService {
       }
     }
   }
+
+  addComment(newsIndex: number, content: string): Observable<any>{
+    const baseURL = this.urlApiAddress + 'private/news' + `/${newsIndex}/addComment`;
+
+    return this.authService.userSubject.pipe(
+      take(1),
+      exhaustMap( 
+        userData => {
+          const sendCommentRequest$: Observable<any> = this.httpClient.post(
+            baseURL, 
+            {'content': content, groupId: 0},
+            { headers: this.getAuthHeaders(userData)}
+          )
+
+          return sendCommentRequest$;
+        }
+      )
+    )
+
+  }
+
 }

@@ -7,6 +7,7 @@ import { CutCommentCharactersPipe, CutPostCharactersPipe, FormatBackendDatePipe 
 import { PostPageComponent } from './components/post-page/post-page.component';
 import { RouterModule } from '@angular/router';
 import { CommentDialogComponent } from './components/comment-dialog/comment-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { CommentInterface } from './models/post-and-comment.model';
 
 /* poniższe eksporty gwarantują mi, że mogę korzystać z tych serwisów wyłącznie importując je z modułu np: import {RestService} from 'src/app/common/common.module' */
@@ -17,17 +18,18 @@ export { RestService } from './services/rest.service';
   declarations: [
     LayoutScrollableComponent,
     LayoutForPostsComponent,
+    PostPageComponent,
+    CommentDialogComponent,
     // pipes:
     CutPostCharactersPipe,
     CutCommentCharactersPipe,
     FormatBackendDatePipe,
-    PostPageComponent,
-    CommentDialogComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     LayoutScrollableComponent,
