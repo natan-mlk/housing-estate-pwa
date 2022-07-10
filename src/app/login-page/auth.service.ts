@@ -28,9 +28,29 @@ export class AuthService {
     ).pipe(
       tap( (response: any) => {
         const userAuthData: User = new User(response.username, response.permissions, response.authToken);
-        this.userSubject.next(userAuthData)
+        this.userSubject.next(userAuthData);
+        this.putAuthTokenToLocalStorage(userAuthData);
       })
     )
+
+  }
+
+  autoLogin(){
+    const userAuthData: any = JSON.parse(localStorage.getItem('userData')!);
+    
+    if(!userAuthData){
+      return ;
+    } else {
+      const localUserAuthData: User = new User(userAuthData.username, userAuthData.permissions, userAuthData._authToken);
+      this.userSubject.next(localUserAuthData);      
+    }
+  }
+
+  private putAuthTokenToLocalStorage(userAuthData: User){
+    localStorage.setItem('userData', JSON.stringify(userAuthData));
+  }
+
+  logout(){
 
   }
 }

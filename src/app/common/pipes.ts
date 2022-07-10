@@ -6,10 +6,10 @@ import { DateAndTimeService } from "./common.module";
 })
 export class CutPostCharactersPipe implements PipeTransform {
     transform(text: string) {
-        if (text.length <= 400) {
-            return text.substring(0, 400);
+        if (text.length <= 300) {
+            return text.substring(0, 300);
         } else {
-            return text.substring(0, 400) + '(...)';
+            return text.substring(0, 300) + '(...)';
         }
     }
 }
@@ -19,10 +19,10 @@ export class CutPostCharactersPipe implements PipeTransform {
 })
 export class CutCommentCharactersPipe implements PipeTransform {
     transform(text: string) {
-        if (text.length <= 200) {
-            return text.substring(0, 200);
+        if (text.length <= 100) {
+            return text.substring(0, 100);
         } else {
-            return text.substring(0, 200) + '(...)';
+            return text.substring(0, 100) + '(...)';
         }
     }
 }
