@@ -51,6 +51,7 @@ export class AuthService {
   }
 
   logout(){
-
+    this.userSubject.next(null);
+    localStorage.removeItem('userData');
   }
 }

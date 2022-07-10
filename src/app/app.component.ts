@@ -48,13 +48,17 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  logout(): void {
+    this.authenticationService.logout();
+  }
+
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
     this.swUpdateSubscription.unsubscribe();
   }
 
+  // --------------
   subscribeToNotifications() {
-
     this.swPush.requestSubscription({
       serverPublicKey: this.VAPID_PUBLIC_KEY
     })

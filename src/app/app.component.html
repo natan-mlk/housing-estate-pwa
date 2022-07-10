@@ -16,7 +16,7 @@
     <button mat-menu-item routerLink="announcements">Giełda</button>
   </mat-menu>
 
-  <span class="toolbar_menu-title" routerLink="">NoweKolibki</span>
+  <span class="toolbar_menu-title" routerLink="news">NoweKolibki</span>
 
   <span class="example-spacer"></span>
 
@@ -39,7 +39,7 @@
   <button mat-menu-item routerLink="user-profile">
     <mat-icon>settings</mat-icon>Ustawienia profilu
   </button>
-  <button mat-menu-item routerLink="">
+  <button mat-menu-item routerLink="" (click)="logout()">
     <mat-icon>logout</mat-icon>Wyloguj
   </button>
 </mat-menu>
