@@ -19,7 +19,8 @@ export class AuthService {
   sendLoginRequest(login: string, password: string): Observable<any> {
     return this.httpClient.post(
       this.urlApiAddress +  'public/login/',
-      { "username": "a.natan.mlk@gmail.com", "password": "test" },
+      // { "username": "a.natan.mlk@gmail.com", "password": "test" },
+      { "username": login, "password": password },
       {
         headers: {
           'Content-Type': 'application/json'
