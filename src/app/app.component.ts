@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwPush, SwUpdate } from '@angular/service-worker';
 import { Subscription } from 'rxjs';
+import { RolesService } from './common/services/roles.service';
 import { AuthService } from './login-page/auth.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
   // {"publicKey":"BJIV5wHbf7TxxaZZsUl5oifCpTJs_HimJAp7GN9u8YhkWor_9fPF3J68840Qo3SW7f9Ti5Jg1h7jmdINsvZTP_Y","privateKey":"rQ2CAfiu1Zg38jCZK9G4coaPKMVFxFkzuaawj4G4Gfk"}
 
   isUserAuth: boolean = false;
+  hasAdminRole: boolean = false;
   private swUpdateSubscription: Subscription = Subscription.EMPTY;
   private authSubscription: Subscription = Subscription.EMPTY;
 
@@ -25,7 +27,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private swUpdate: SwUpdate,
     private authenticationService: AuthService,
-    private router: Router
+    private router: Router,
+    private rolesService: RolesService,
   ) {
   }
 
@@ -39,6 +42,8 @@ export class AppComponent implements OnInit, OnDestroy {
       userData => {
         this.isUserAuth = !!userData;
         if(userData){
+          this.rolesService.userRole = userData.permissions;
+          this.hasAdminRole = this.rolesService.hasAdminRole();
           this.router.navigate(['/news']);
         }
       }

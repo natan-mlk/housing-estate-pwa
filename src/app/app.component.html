@@ -14,6 +14,7 @@
     <button mat-menu-item routerLink="announcements">Dyskusje</button>
     <button mat-menu-item routerLink="announcements">Dokumenty</button>
     <button mat-menu-item routerLink="announcements">Giełda</button>
+    <button mat-menu-item routerLink="announcements">Bernadowska</button>
   </mat-menu>
 
   <span class="toolbar_menu-title" routerLink="news">NoweKolibki</span>
@@ -28,6 +29,7 @@
     <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Dyskusje</div>
     <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Dokumenty</div>
     <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Giełda</div>
+    <div class="toolbar_link" routerLink="announcements" routerLinkActive="toolbar_link--active">Bernadowska</div>
   </div>
 
   <button *ngIf="isUserAuth" mat-icon-button color="accent" [matMenuTriggerFor]="userMenu" aria-label="..">
@@ -39,7 +41,10 @@
   <button mat-menu-item routerLink="user-profile">
     <mat-icon>settings</mat-icon>Ustawienia profilu
   </button>
-  <button mat-menu-item routerLink="" (click)="logout()">
+  <button mat-menu-item routerLink="admin-panel">
+    <mat-icon>key</mat-icon>Panel Administratora
+  </button>
+  <button *ngIf="hasAdminRole" mat-menu-item routerLink="" (click)="logout()">
     <mat-icon>logout</mat-icon>Wyloguj
   </button>
 </mat-menu>
