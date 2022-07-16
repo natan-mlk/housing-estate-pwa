@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SwPush, SwUpdate } from '@angular/service-worker';
 import { Subscription } from 'rxjs';
 import { AuthService } from './login-page/auth.service';
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private swPush: SwPush,
     private http: HttpClient,
     private swUpdate: SwUpdate,
-    private authenticationService: AuthService
+    private authenticationService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -36,6 +38,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authenticationService.userSubject.subscribe(
       userData => {
         this.isUserAuth = !!userData;
+        if(userData){
+          this.router.navigate(['/news']);
+        }
       }
     )
 

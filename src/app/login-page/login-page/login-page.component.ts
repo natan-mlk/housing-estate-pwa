@@ -15,8 +15,6 @@ export class LoginPageComponent implements OnInit {
   public username: string = 'a.natan.mlk@gmail.com';
   public password: string = 'test';
 
-  API_URL = 'https://mieszkancynowekolibki.pl:8008/api';
-
   formGroup = new FormGroup({
     login: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
@@ -28,6 +26,7 @@ export class LoginPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
   }
 
   // TODO dodaj jakąś walidację, może niech się disabluje button na dole jeśli nic się nie wpisze
