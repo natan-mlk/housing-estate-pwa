@@ -44,6 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
         if(userData){
           this.rolesService.userRole = userData.permissions;
           this.hasAdminRole = this.rolesService.hasAdminRole();
+          this.authenticationService.userData = userData;
           this.router.navigate(['/news']);
         }
       }

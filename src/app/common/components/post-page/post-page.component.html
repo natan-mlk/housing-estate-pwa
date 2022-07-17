@@ -12,6 +12,9 @@
 
       <mat-card-actions align="end">
         <button color="accent" mat-flat-button (click)="openCommentDialog()">Skomentuj</button>
+        <button *ngIf="hasAdminRole" color="warn" mat-flat-button (click)="openDeleteDialog()">
+          <mat-icon>key</mat-icon> Skasuj
+        </button>
       </mat-card-actions>
 
       
@@ -23,7 +26,9 @@
               <p class="comment-container_text">
                 {{comment.content}}
               </p>
-              <p>- Mieszkaniec</p>
+              <p>
+                - Mieszkaniec <button *ngIf="comment.username === userData!.username" color="accent" mat-stroked-button (click)="openCommentDialog()">Edytuj swój post</button>
+              </p>
               <mat-divider></mat-divider>
           </div>
         </mat-card-content>

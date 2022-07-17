@@ -10,6 +10,7 @@ export class AuthService {
 
   userSubject = new BehaviorSubject<User | null>(null);
   // private urlApiAddress: string = 'https://mieszkancynowekolibki.pl:8008/api/';
+  userData: User | null = null;
   private urlApiAddress: string = 'https://mieszkancyrivus.pl:8008/api/';
 
   constructor(
@@ -28,9 +29,9 @@ export class AuthService {
       }
     ).pipe(
       tap( (response: any) => {
-        const userAuthData: User = new User(response.username, response.permissions, response.authToken);
-        this.userSubject.next(userAuthData);
-        this.putAuthTokenToLocalStorage(userAuthData);
+        this.userData = new User(response.username, response.permissions, response.authToken);
+        this.userSubject.next(this.userData);
+        this.putUserDataToLocalStorage(this.userData);
       })
     )
 
@@ -47,7 +48,7 @@ export class AuthService {
     }
   }
 
-  private putAuthTokenToLocalStorage(userAuthData: User){
+  private putUserDataToLocalStorage(userAuthData: User){
     localStorage.setItem('userData', JSON.stringify(userAuthData));
   }
 

@@ -5,6 +5,9 @@ import { RestService } from '../../services/rest.service';
 import { AllCommentsInterfaceOrigin, PostInterfaceOrigin, PostInterface } from '../../models/post-and-comment.model';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
+import { RolesService } from '../../services/roles.service';
+import { AuthService } from 'src/app/login-page/auth.service';
+import { User } from 'src/app/login-page/user';
 
 export interface CommentDialogInterface {
   postId: number,
@@ -22,14 +25,21 @@ export class PostPageComponent implements OnInit {
   allComments: AllCommentsInterfaceOrigin | null = null;
   isDataLoading: boolean = true;
   postId: string = '';
+  hasAdminRole: boolean = false;
+  userData: User | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private restService: RestService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private rolesService: RolesService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.hasAdminRole = this.rolesService.hasAdminRole();
+    this.userData = this.authService.userData;
+    
     this.route.params
     .pipe(
       mergeMap(
@@ -80,6 +90,10 @@ export class PostPageComponent implements OnInit {
           )
         }
       });
+    }
+
+    openDeleteDialog(): void {
+
     }
   
 }

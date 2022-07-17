@@ -1,5 +1,5 @@
 interface CommentInterface {
-    content: string;
+  content: string;
   date: string;
   groupId: number;
   newsRequest: any;
