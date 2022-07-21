@@ -11,7 +11,9 @@ import { User } from 'src/app/login-page/user';
 
 export interface CommentDialogInterface {
   postId: number,
-  userName?: string
+  userName?: string,
+  content?: string,
+  actionType: 'add' | 'edit'
 }
 
 @Component({
@@ -63,13 +65,14 @@ export class PostPageComponent implements OnInit {
     return this.restService.getPostWithComments(this.postId);
   }
 
-  openCommentDialog(): void {
+  openAddDialog(): void {
       const dialogRef = this.dialog.open(CommentDialogComponent, {
         maxWidth: '95vw',
         panelClass: 'comment-dialog',
         data: {
           postId : this.post?.id,
-          userName: 'Mieszkaniec'
+          userName: 'Mieszkaniec',
+          actionType: 'add'
         },
       });
   
@@ -89,6 +92,19 @@ export class PostPageComponent implements OnInit {
             }
           )
         }
+      });
+    }
+
+    openEditDialog(commentContent: string): void {
+      const dialogRef = this.dialog.open(CommentDialogComponent, {
+        maxWidth: '95vw',
+        panelClass: 'comment-dialog',
+        data: {
+          postId : this.post?.id,
+          userName: 'Mieszkaniec',
+          content: commentContent,
+          actionType: 'edit'
+        },
       });
     }
 

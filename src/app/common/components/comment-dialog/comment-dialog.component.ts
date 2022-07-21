@@ -30,6 +30,15 @@ export class CommentDialogComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
+    if(this.data.content){
+      this.commentFormGroup.setValue(
+        {content: this.data.content,
+          user: this.data.userName
+        }
+      ) 
+    }
+
     this.formStatusSubscription = this.commentFormGroup.statusChanges.subscribe(
       status => {        
         if(status === 'VALID') {
@@ -53,13 +62,25 @@ export class CommentDialogComponent implements OnInit, OnDestroy {
 
   onSendCommentClick(){
     this.isLoaderVisible = true;
-    this.restService.addComment(this.data.postId, this.commentFormGroup.get('content')?.value).subscribe(
-      {
-        next: (v) => this.dialogRef.close(true),
-        error: (e) => console.error(e),
-        complete: () => console.info('complete') 
-      }
-    )
+    console.log('this.data.actionType', this.data.actionType);
+    
+    if(this.data.actionType === 'add'){
+      this.restService.addComment(this.data.postId, this.commentFormGroup.get('content')?.value).subscribe(
+        {
+          next: (v) => this.dialogRef.close(true),
+          error: (e) => console.error(e),
+          complete: () => console.info('complete') 
+        }
+      )
+    }
+
+    if(this.data.actionType === 'edit'){
+      console.log('EDYCJA - uzupełnij');
+      this.isLoaderVisible = false;
+
+    }
+
   }
+
 
 }
